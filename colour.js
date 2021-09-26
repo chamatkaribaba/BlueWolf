@@ -1,0 +1,1 @@
+embedcolor = "#32CD32"
