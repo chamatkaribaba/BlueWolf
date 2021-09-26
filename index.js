@@ -251,6 +251,7 @@ client.on("message", async (message) => {
 
   
 client.on("message", async (message) => {
+  
   if (message.author.bot) return;
   let msg = message.content;
 
@@ -792,6 +793,12 @@ setInterval(async () => {
    message.guild.channel.cache.get(`${channel}`).send(embed)
   });
 }, 6000);*/
+function randomNumber(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+} 
+
 
 run();
 
