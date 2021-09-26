@@ -758,4 +758,4 @@ setInterval(async () => {
 
 run();
 
-client.login(process.env['token'])
+client.login("ODQzMDExNzExNzI3OTYwMDc1.YJ9p1g.3MW25uy3xTmvSNMc-1nbsBxcsQ0")
