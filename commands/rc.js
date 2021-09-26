@@ -35,7 +35,7 @@ module.exports.run = async function(client,message, args) {
 
             if (button.id == "reaction") {
                 clearInterval(setTimer)
-                button.message.edit(":yes~8: It took you " +time / 1000+ "s to react")
+                button.message.edit(" 🤔 It took you " +time / 1000+ "s to react")
             }
         })
 
