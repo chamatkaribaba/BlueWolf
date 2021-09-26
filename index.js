@@ -252,7 +252,8 @@ client.on("message", async (message) => {
   
 client.on("message", async (message) => {
   
-    const cchann = db.get(`chatbot_${message.guild.id}`);
+  
+  const cchann = db.get(`chatbot_${message.guild.id}`);
   if (cchann === null) return;
   if (!cchann) return;
   const sender = client.channels.cache.get(cchann);
@@ -759,6 +760,7 @@ setInterval(async () => {
 
 
 
+
 client.on("message", async (message) => {
   if (message.author.bot) return;
   let msg = message.content;
@@ -800,6 +802,10 @@ client.on("message", async (message) => {
 
 
 })
+
+
+
+
 
 
 function randomNumber(min, max) {
