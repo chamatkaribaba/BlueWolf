@@ -1,11 +1,11 @@
-const express = require('express');
+/*const express = require('express');
 const app = express();
 const port = 3000;
 
 app.get('/', (req, res) => res.send(` m alive ig `));          
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
-
+*/
 
 
 const Discord = require('discord.js');
@@ -684,7 +684,7 @@ client.on('guildMemberAdd', async (member) => {
 
 client.on('messageReactionAdd', async (reaction, user) => {
     const handleStarboard = async () => {
-        const SBChannel = client.channels.cache.find(channel => channel.name.toLowerCase() === 'starboard');
+        const SBChannel = await db.fetch(`starborad_${message.guild.id}`)
         const msgs = await SBChannel.messages.fetch({ limit: 100 });
         const SentMessage = msgs.find(msg => 
             msg.embeds.length === 1 ?

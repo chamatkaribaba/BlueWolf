@@ -1,15 +1,17 @@
-const db = require('quick.db')
+const db = require("quick.db");
 
 module.exports.help = {
-    name: "setstarborad",
-    decreption: "starboard",
-    aliases: ["ssbc"]
+    name: "setstarboardchannel",
+    decreption: "setstarboardchannel",
+    aliases: ["ssb"]
 }
 
-module.exports.run = async function(message, args, client ){
-        if (!message.member.permissions.has('ADMINISTRATOR')) {
-            return message.channel.send(`You are unable to set members`)
-        }
+module.exports.run = async function(client, message, args) {
+
+    if (!message.member.hasPermission("ADMINISTRATOR"))
+      return message.channel.send(
+        "**You Do Not Have The Required Permissions! - [ADMINISTRATOR]**"
+      );
     
     if (!args[0]) {
       let b = await db.fetch(`starboard_${message.guild.id}`);
