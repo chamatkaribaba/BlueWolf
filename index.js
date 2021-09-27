@@ -682,9 +682,9 @@ client.on('guildMemberAdd', async (member) => {
 
 
 
-client.on('messageReactionAdd', async (reaction, user) => {
+client.on('messageReactionAdd', async (reaction, user,message) => {
     const handleStarboard = async () => {
-        const SBChannel = await db.fetch(`starborad_${message.guild.id}`)
+        const SBChannel = client.channels.cache.find(channel => channel.name.toLowerCase() === 'starboard');
         const msgs = await SBChannel.messages.fetch({ limit: 100 });
         const SentMessage = msgs.find(msg => 
             msg.embeds.length === 1 ?
