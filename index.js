@@ -251,6 +251,22 @@ client.on("message", async (message) => {
 
   
 client.on("message", async (message) => {
+
+ xp(message)
+  function xp(message) {
+        if(message.author.bot) return
+        const randomNumber = Math.floor(Math.random() * 10) + 15;
+        db.add(`guild_${message.guild.id}_xp_${message.author.id}`, randomNumber) 
+        db.add(`guild_${message.guild.id}_xptotal_${message.author.id}`, randomNumber)
+        var level = db.get(`guild_${message.guild.id}_level_${message.author.id}`) || 1
+        var xp = db.get(`guild_${message.guild.id}_xp_${message.author.id}`)
+        var xpNeeded = level * 500;
+        if(xpNeeded < xp){
+            var newLevel = db.add(`guild_${message.guild.id}_level_${message.author.id}`, 1) 
+            db.subtract(`guild_${message.guild.id}_xp_${message.author.id}`, xpNeeded)
+            message.channel.send(`Congrats ${message.author}, you leveled up, you are now level ${newLevel}`)
+        }
+}
   
   
   const cchann = db.get(`chatbot_${message.guild.id}`);
@@ -278,7 +294,7 @@ client.on("message", async (message) => {
   }
   if (message.author.bot) return;
   if (message.channel.type === "dm") return;
-
+/*
   let messageFetch = db.fetch(`guildMessages_${message.guild.id}`)
   if (messageFetch === null) return;
 
@@ -372,6 +388,8 @@ client.on("message", async (message) => {
       .setFooter(`use disablelevels command To Disable Level Up Messages`)
     message.channel.send(levelembed);
   };
+*/
+
 
   if (message.mentions.members.first()) {
     if (db.has(`ar-${message.mentions.members.first().id}+${message.guild.id}`)) {
@@ -407,6 +425,7 @@ let Of = await db.fetch(`AntiInviteOn_${message.guild.id}`);
 
    
 })
+
 
 const antiSpam = new AntiSpam({
   warnThreshold: 3,
@@ -778,7 +797,7 @@ client.on("message", async (message) => {
   if (msg === message.content) return;
 
   let webhook = await message.channel.fetchWebhooks();
-  let number = randomNumber(1, 2);
+  let number = Randomnumber(1, 2);
   webhook = webhook.find(x => x.name === "NQN" + number);
 
   if (!webhook) {
@@ -808,7 +827,7 @@ client.on("message", async (message) => {
 
 
 
-function randomNumber(min, max) {
+function Randomnumber(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -818,9 +837,3 @@ function randomNumber(min, max) {
 run();
 
 client.login("ODQzMDExNzExNzI3OTYwMDc1.YJ9p1g.3MW25uy3xTmvSNMc-1nbsBxcsQ0")
-
-function randomNumber(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-} 

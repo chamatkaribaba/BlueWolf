@@ -5,36 +5,20 @@ const db = require('quick.db')
 module.exports.help = {
   name: "level",
   decreption: "level",
-  aliases: []
+  aliases: ["xp"]
 }
 
 module.exports.run = async function(client, message, args) {
 
   let prefix = await db.fetch(`prefix_${message.guild.id}`) || "="
-  let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase() === args.join(' ').toLocaleLowerCase()) || message.member;
-  if (!user) return message.channel.send('**Please Enter A Valid User!**')
-  if (user.user.bot) return message.channel.send(`**Bot's Dont Have XP Level!**`);
+ const user = message.mentions.members.first() || message.author.id;
 
-  let guildMessages = db.fetch(`guildMessages_${message.guild.id}`) 
-  if (guildMessages === null) return message.channel.send(`**Level Up Messages Are Currently Disabled!\n\`${prefix}setxp\` To Enable**`);
+    const level = db.fetch(`guild_${message.guild.id}_level_${user.id}`) || 0
+    const currentxp = db.fetch(`guild_${message.guild.id}_xp_${user.id}`) || 0
+    const xpNeeded = level * 500 + 500
 
-  let xp = db.fetch(`messages_${message.guild.id}_${user.id}`)
-  let lvl = db.fetch(`level_${message.guild.id}_${user.id}`)
-
-  if (lvl === null) lvl = 0
-  if (xp === null) xp = 0
-
-  let curxp = xp;
-  let curlvl = lvl;
-  let nxtLvlXp = curlvl * 100;
-  let difference2 = nxtLvlXp + 100 - curxp;
-
-  const embed = new MessageEmbed()
-    .setTitle(`**${user.displayName}'s Level Information**`)
-    .setColor("GREEN")
-    .setDescription(`**Current Level - \`${curlvl}\` | Total XP - \`${curxp - 1}\`
-                    Needed XP To Reach Next Level - \`${difference2 + 1}\`**
-                    `)
-    .setFooter(message.guild.name, message.guild.iconURL())
-  message.channel.send(embed)
-}
+  const embedlvl = new MessageEmbed()
+    .setTitle(`${user.id}'s Level`)
+    .setDescription(`**xp**${currentxp}/${xpNeeded} \n\n **level** ${level}`)
+            message.channel.send(embedlvl)
+    }
