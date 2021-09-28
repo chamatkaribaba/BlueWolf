@@ -19,15 +19,22 @@ module.exports.run = async function(client, message, args) {
       return message.channel.send("Bot do not have levels")
     }
     
-    let xp = db.get(`xp_${user.id}_${message.guild.id}`) || 0;
+  let xp = db.fetch(`messages_${message.guild.id}_${user.id}`)
+  let lvl = db.fetch(`level_${message.guild.id}_${user.id}`)
     
-    const {level, remxp, levelxp} = getInfo(xp);
+    if (lvl === null) lvl = 0
+  if (xp === null) xp = 0
+
+  let curxp = xp;
+  let curlvl = lvl;
+  let nxtLvlXp = curlvl * 100;
+  let difference2 = nxtLvlXp + 100 - curxp;
     
 const rank = new canvacord.Rank()
     .setAvatar(user.displayAvatarURL({dynamic: false,  format: 'png'}))
-    .setCurrentXP(remxp)
-    .setRequiredXP(levelxp)
-    .setLevel(level)
+    .setCurrentXP(curxp)
+    .setRequiredXP(difference2)
+    .setLevel(curlvl)
     .setStatus(user.presence.status)
     .setProgressBar("#4169E1", "COLOR")
     .setUsername(user.username)
