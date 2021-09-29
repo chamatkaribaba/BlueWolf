@@ -252,7 +252,9 @@ client.on("message", async (message) => {
   
 client.on("message", async (message) => {
 
- xp(message)
+
+  await xp(message)
+
   function xp(message) {
         if(message.author.bot) return
         const randomNumber = Math.floor(Math.random() * 10) + 15;
@@ -267,7 +269,6 @@ client.on("message", async (message) => {
             message.channel.send(`Congrats ${message.author}, you leveled up, you are now level ${newLevel}`)
         }
 }
-  
   
   const cchann = db.get(`chatbot_${message.guild.id}`);
   if (cchann === null) return;

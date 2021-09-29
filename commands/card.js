@@ -21,14 +21,15 @@ const rankcard = new canvacord.Rank()
         .setStatus(user.presence.status)
         .setLevel(db.fetch(`guild_${message.guild.id}_level_${user.id}`) || 0)
         .setRank(1, 'RANK', false)
-        .setProgressBar("#a0b327", "COLOR")
-        .setOverlay("#000000")
+        .setProgressBar("#0000ff", "COLOR")
+        //.setOverlay("#ffffff")
         .setUsername(user.username)
         .setDiscriminator(user.discriminator)
         .setBackground("IMAGE", "https://cdn.discordapp.com/attachments/889054278134677555/890899085966585877/unknown.png")
         rankcard.build()
         .then(data => {
             const atta = new Discord.MessageAttachment(data, "rank.png")
+            
             message.channel.send(atta)
         })
     
