@@ -3,7 +3,7 @@ const canvacord = require("canvacord");
 const Discord = require("discord.js");
 module.exports.help = {
     name: "card",
-    decreption: "shows your rank card",
+    decreption: "shows your rank card based on your level",
     aliases: ["rankcard" , "rank"]
 }
 
