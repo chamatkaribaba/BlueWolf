@@ -1,14 +1,16 @@
 module.exports.help = {
-    name: "battle",
-    decreption: "batle a user",
-    aliases: ["bat"]
-}
+  name: 'battle',
+  descreption: "battle your friends",
+  aliases: ["bat"]
+  }
 
-module.exports.run = async function(client, message, args) {
-const minigames = require('discord-minigames')
+const {MessageEmbed} = require('discord.js')
+module.exports.run = async function(client, message,args) {
 
-let member = message.mentions.members.first()
-
-minigames.startBattle(member, message)
-
-}
+const { DiscordBattleShip } = require("discord-battleship");
+ 
+const BattleShip = new DiscordBattleShip({
+    embedColor: "BLUE",
+    prefix: "bat",
+});
+};
