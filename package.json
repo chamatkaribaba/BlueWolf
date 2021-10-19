@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ."
   },
   "keywords": [],
   "author": "",
@@ -50,6 +50,7 @@
     "jimp": "^0.16.1",
     "join": "^3.0.0",
     "jointocreate": "^1.1.8",
+    "jquery": "^3.6.0",
     "jsonfile": "^6.1.0",
     "lodash": "^4.17.21",
     "long": "^4.0.0",

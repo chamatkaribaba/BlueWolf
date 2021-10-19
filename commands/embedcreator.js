@@ -1,15 +1,7 @@
-module.exports.help = {
-  name: 'embed',
-  descreption: "embed",
-  aliases: ["createembed"]
-  }
 
-
-module.exports.run = async function(client, message,args) {    
-    
     const Discord = require("discord.js");
 const db = require("quick.db");
-const config = require("./Config.json");
+const config = require("../Config.json");
 const moment = require("moment")
 
 
@@ -240,5 +232,4 @@ console.log(error)
 return message.reply("EMBED CANCELLED! You didn't answer in time!");
 });
 })
-};
 };

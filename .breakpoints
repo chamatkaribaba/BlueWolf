@@ -8,24 +8,32 @@
         "index": 549
       }
     ],
+    "index.html": [
+      {
+        "id": "c61e36c5-7f6f-4daf-834d-cd84254beff5",
+        "line": 14,
+        "version": 7,
+        "index": 847
+      }
+    ],
     "index.js": [
       {
         "id": "d07b902d-3bcd-4052-80d6-1c54b5b09f4a",
-        "line": 272,
-        "version": 7402,
-        "index": 9059
+        "line": 286,
+        "version": 7525,
+        "index": 9372
       },
       {
         "id": "39d61297-3ce2-436b-b741-e7ce8d4d61a7",
-        "line": 762,
-        "version": 7402,
-        "index": 26859
+        "line": 775,
+        "version": 7525,
+        "index": 27172
       },
       {
         "id": "f00b3b17-451f-4ec6-b9db-ddf3ccc71359",
-        "line": 841,
-        "version": 7402,
-        "index": 30569
+        "line": 854,
+        "version": 7525,
+        "index": 30884
       }
     ]
   }
